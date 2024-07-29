@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/default_layout2}">
+
+<body>
+<th:block layout:fragment="content">
+    <h1>오늘 점심 뭐 먹지?</h1>
+    <style>
+        body {
+            background-image: url('/image/balloon.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+    </style>
+
+    <!-- 이미지 자동 변경 스크립트 -->
+    <!--
+    <script>
+        const images = [
+            '/image/balloon.jpg',
+            '/image/road.jpg',
+            '/image/1.jpg',
+            '/image/2.jpg',
+        ];
+        let currentIndex = 0;
+
+        function changeBackground() {
+            const imageUrl = images[currentIndex];
+            document.body.style.backgroundImage = `url(${imageUrl})`;
+
+            currentIndex = (currentIndex + 1) % images.length;
+        }
+
+        setInterval(changeBackground, 3000); // 3초마다 배경 변경
+    </script>
+    -->
+
+    <!-- 메모 추가 폼 -->
+    <div class="form-group">
+        <form id="my-form">
+            <div id="inputForm">
+                <label for="comment">메모 추가: 대표사진 한 장 추가 가능해요.</label>
+                <input class="form-control" id="dbTitle" name="dbTitle" placeholder="ex) 제목_반찬, 음료, 과일, 재료, 소스, 냉동, 간식 등">
+                <br>
+                <input class="form-control" id="dbMessage" name="dbMessage" placeholder="유통기한 등 메모">
+                <br>
+                <div class="form-group">
+                    <label for="file">이미지 선택:</label>
+                    <input type="file" id="image" name="file" class="form-control-file" onchange="loadImage()">
+                </div>
+                <br>
+                <br>
+                <button id="uploadDBWithImageBtn" type="submit" class="btn btn-primary">추가하기</button>
+                <div>
+                    <img id="preview" src="" alt="Image Preview">
+                    <video id="previewVideo" controls src=""></video>
+                </div>
+                <br>
+            </div>
+        </form>
+    </div>
+
+    <!-- 검색 섹션 -->
+    <div class="form-group" id="searchBox">
+        <label for="comment">검색: </label>
+        <select name="searchDB" id="searchDB" class="form-control">
+            <option value="message">메시지 검색</option>
+            <option value="title" selected>제목 검색</option>
+            <option value="_id">ID 검색</option>
+        </select>
+        <input class="form-control" id="searchContent" name="searchContent" placeholder="기본 제목으로 검색">
+        <br>
+        <button id="dbSearchBtn" class="btn btn-primary">검색하기</button>
+        <br>
+        <br>
+        <div id="dbSearchBtn2">
+            <button id="ban" value="반찬" class="btn btn-success">반찬</button>
+            <button id="ban" value="음료" class="btn btn-danger">음료</button>
+            <button id="ban" value="과일" class="btn btn-warning">과일</button>
+            <button id="ban" value="재료" class="btn btn-info">재료</button>
+            <button id="ban" value="소스" class="btn btn-light">소스</button>
+            <button id="ban" value="냉동" class="btn btn-dark">냉동</button>
+            <button id="ban" value="간식" class="btn btn-secondary">간식</button>
+        </div>
+    </div>
+
+    <!-- 검색 결과 -->
+    <h2>검색 목록</h2>
+    <h3 id="findSearchMemoCount2">검색 count: <span id="findSearchMemoCount"></span></h3>
+    <div id="searchResult"></div>
+
+    <!-- 맨 위로 스크롤 버튼 -->
+    <br>
+    <button id="scroll-to-top" class="btn btn-primary">Top</button>
+
+    <!-- 전체 목록 섹션 -->
+    <h2>전체 목록</h2>
+    <h3>전체 count: <span id="findAllMemoCount"></span></h3>
+    <div id="dbResult"></div>
+
+</th:block>
+
+<script>
+    function loadImage() {
+        const input = document.getElementById('image');
+        const preview = document.getElementById('preview');
+        const previewVideo = document.getElementById('previewVideo');
+
+        const file = input.files[0];
+        if (!file) return;
+
+        const reader = new FileReader();
+        const fileType = file.type.split('/')[0];
+
+        if (fileType === 'image') {
+            previewVideo.style.display = 'none';
+            reader.onload = function (e) {
+                preview.src = e.target.result;
+                preview.style.display = 'block';
+            };
+            reader.readAsDataURL(file);
+        } else if (fileType === 'video') {
+            preview.style.display = 'none';
+            previewVideo.src = URL.createObjectURL(file);
+            previewVideo.style.display = 'block';
+        }
+    }
+
+    document.getElementById('my-form').addEventListener('submit', function (e) {
+        e.preventDefault();
+        // 폼 제출 로직 추가
+    });
+</script>
+</body>
+</html>
