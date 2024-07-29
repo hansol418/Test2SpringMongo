@@ -1,0 +1,100 @@
+h1 {
+	  font-size: 3em;
+            font-weight: bold;
+            color: #333;
+            margin-top: 50px;
+            font-family: 'SDSamliphopangche_Outline';
+	}
+	h2,h3 {
+	font-family: 'SDSamliphopangche_Outline';
+	}
+	@font-face {
+    font-family: 'SDSamliphopangche_Outline';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts-20-12@1.0/SDSamliphopangche_Outline.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+	
+th, td {
+  border:1px solid black;
+  font-family: 'SDSamliphopangche_Outline';
+
+}
+table {
+	font-family: 'SDSamliphopangche_Outline';
+	border:1px solid black;
+	  width:700px;
+  table-layout:fixed;
+  word-break:break-all;
+  height: auto;
+  /* margin-left: 1px; */
+  
+  
+ 
+}
+#uploadDBWithImageBtn , #listBtn{
+	margin-left : 3px;
+	      font-family: 'SDSamliphopangche_Outline';
+}
+body {
+	/* background-image:url('https://i.ibb.co/3493r17/cat.jpg') */
+	
+	/* background-image:url('/image/balloon.jpg') */
+	
+}
+a {
+	      font-family: 'SDSamliphopangche_Outline';
+}
+
+#searchBox {
+	      font-family: 'SDSamliphopangche_Outline';
+	margin-left : 3px;
+}
+
+#inputForm {
+	font-family: 'SDSamliphopangche_Outline';
+	  border:1px solid black;
+	    margin-left : 3px;
+	    padding-left: 3px;
+	    padding-right:3px;
+	    padding-top:3px;
+	    padding-bottom:3px;
+}
+
+#preview , #imgId4{
+	/* width: 100px;
+	height:150px; */
+	max-width: 70%;
+  height: auto;
+  display: block;
+  margin-left: 3px;
+  margin-top: 5px;
+}
+
+ img {
+/* 	width: 100px;
+	height:150px; */
+	max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+ video {
+	width: 200px;
+	height:150px;
+}
+
+#scroll-to-top {
+  position: fixed;
+  bottom: 200px;
+  right: 10px;
+  display: none;
+}
+ 
+   .card-text{
+   font-family: 'SDSamliphopangche_Outline';
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+        }

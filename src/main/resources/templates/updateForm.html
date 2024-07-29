@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="~{layout/default_layout2}">
+
+<body><th:block layout:fragment="content">
+    <h1 > 수정페이지</h1>
+   
+<body>
+  <style>
+   body {
+   background-image:url('/image/balloon.jpg')
+   }
+   </style>
+   	<div class="form-group">
+   	 <div id=inputForm>
+        <form id="my-form">
+           
+    		<label for="comment">메모수정:제목, 메세지 </label>
+    		<input class="form-control"   id="dbId" name="dbId" placeholder="1 형식 입력"  th:value="${memo.id}" hidden="hidden"></input>
+    		<input class="form-control"   id="dbTitle" name="dbTitle"placeholder="제목 입력" th:value="${memo.title}"></input>
+    		<br>
+    		<input class="form-control"   id="dbMessage" name="dbMessage" placeholder="메세지입력" th:value="${memo.message}"></input>
+        <div class="form-group">
+            <label for="file">Choose an image:</label>
+            <input type="file" id="image" name="file" class="form-control-file" onchange="loadImage()">
+        </div>
+        <br>
+        <button id="dbUpdateBtn2" type="submit" class="btn btn-primary" >수정적용하기</button>
+    		<!--<button id="dbUpdateBtn2" class="text-bg-primary">수정적용하기</button>-->
+        </form>
+        </div>
+    	</div>
+    <div>
+        <img id="preview" src="" alt="Image Preview">
+        <video id="previewVideo" controls src=""></video>
+    </div>
+    <br>
+   
+
+    <img id="imgId4" src=""+  alt="첨부이미지"  />
+    <!--자바스크립트 코드이용해서, 이미지 태그 속성값에 타임리프 객체 내용 넣기-->
+    <script th:inline="javascript">
+
+        /*<![CDATA[*/
+
+        var message = [[${memo.imageFileName}]];
+        var imgElement = document.getElementById("imgId4");
+        var newUrl = "/images/"+message;
+        imgElement.src = newUrl;
+
+
+
+        /*]]>*/
+
+    </script>
+
+    <br>
+<!--    <div id="ImageOne" ></div>-->
+                        
+<br>
+    		<button id="listBtn" class="btn btn-primary">목록가기</button>
+<br>
+
+
+<br>
+   <table class="table  table-hover " >
+  <tr>
+    <th>제목</th>
+    <th>메세지</th>
+    <th>등록일</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td th:text="${memo.title}"> </td>
+    <td th:text="${memo.message}"></td>
+      <td th:text="${memo.dateField}"></td>
+  </tr>
+ </tbody>
+</table>
+
+     </th:block>
+   
+</body>
+ 
+

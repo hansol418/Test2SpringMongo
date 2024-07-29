@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="~{layout/default_layout}">
+
+<body> 
+
+<th:block layout:fragment="content">
+   <style>
+   body {
+   background-image:url('/image/balloon.jpg')
+   }
+   </style>
+        <!-- <h1 > 미니 인프런 프로젝트 메인 모드 읽기 전용모드</h1> -->
+        <h1>관리자 페이지 사용중.</h1>
+   <h4>1. Springboot 3.2.1, 2. AWS Lightsail AMI2, 3. docker mongodb 6.0.4, 4. SSL 설정, 5.도메인설정.</h4>
+   <h4>6. Spring Security 3.2.1  적용, 7. thymeleaf 3.2.1 적용.</h4>
+   
+   <br>
+<!--
+           	<div class="form-group">
+    		<label for="comment">디비검색: </label>
+    		<select name="searchDB" id="searchDB">
+  <option value="message">메세지 검색</option>
+  <option value="title">제목 검색</option>
+  <option value="_id" selected="selected">ID 검색</option>
+</select>
+    		<input class="form-control"   id="searchContent" name="searchContent" placeholder="1 형식 입력: 작업중 대기"></input>
+    		<br>
+    		<button id="dbSearchBtn" class="btn btn-primary">디비검색</button>
+    		<br>
+    	</div>-->
+    	
+    <br>
+    <button id="scroll-to-top" class="btn btn-primary">Top</button>
+
+    <br>
+<!--    <div id=ImageTest></div>-->
+
+<br>
+<h2>검색 디비 목록</h2>
+<div id="searchResult"></div>
+<!-- <h2>기존 디비 전체 목록</h2>
+      <div id="dbResult"></div>
+  </th:block> -->
+ 
+
+</body>
+ </html>
+

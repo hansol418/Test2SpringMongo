@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="~{layout/default_layout2}">
+
+<body><th:block layout:fragment="content">
+   <h1 >냉장고 및 물품 관리</h1>
+   <style>
+   body {
+   background-image:url('/image/balloon.jpg')
+   }
+   </style>
+   <!-- 이미지자동변경 -->
+   <!-- <style>
+  body {
+    margin: 0;
+    padding: 0;
+    background-size: cover;
+    background-repeat: no-repeat;
+    transition: background-image 1s ease-in-out;
+  }
+</style>
+<script>
+  const images = [
+    '/image/balloon.jpg',
+    '/image/road.jpg',
+    '/image/1.jpg',
+    '/image/2.jpg',
+  ];
+  let currentIndex = 0;
+
+  function changeBackground() {
+    const imageUrl = images[currentIndex];
+    document.body.style.backgroundImage = `url(${imageUrl})`;
+
+    currentIndex = (currentIndex + 1) % images.length;
+  }
+
+  setInterval(changeBackground, 3000); // 5초마다 배경 변경
+</script> -->
+   
+   <!-- <h2>Springboot 2.7.8, AWS Lightsail AMI2, docker mongodb 6.0.4, SSL 설정, 도메인설정.</h2>
+   <h2>Spring Security 적용, thymeleaf 적용.</h2> -->
+
+  <!-- 	<div class="form-group" >
+
+    		<button id="dbInsertBtn" class="btn btn-primary">디비추가</button>
+    	</div>-->
+    <br>
+    <div class="form-group">
+        <!--     <h1>Image Upload</h1> -->
+        <form id="my-form">
+        <div id=inputForm>
+            <label for="comment">메모 추가: 대표사진 한장 추가가능해요.</label>
+            <!-- <input  class="form-control"   id="dbId" name="dbId" placeholder="1 형식 입력"></input> -->
+            <input class="form-control"   id="dbTitle" name="dbTitle"placeholder="ex)제목_반찬,음료,과일,재료,소스,냉동,간식등"></input>
+            <br>
+            <input class="form-control"   id="dbMessage" name="dbMessage" placeholder="유통기한등 메모"></input>
+            <br>
+            <div class="form-group">
+                <label for="file">Choose an image:</label>
+                <input type="file" id="image" name="file" class="form-control-file" onchange="loadImage()">
+            </div>
+            <br>
+            <br>
+                        <button id="uploadDBWithImageBtn" type="submit" class="btn btn-primary" >추가하기</button>
+              <div>
+        <img id="preview" src="" alt="Image Preview">
+        <video id="previewVideo" controls src=""></video>
+    </div>
+    <br>
+    </div>
+    
+        </form>
+    </div>
+  <!--   <div>
+        <img id="preview" src="" alt="Image Preview">
+        <video id="previewVideo" controls src=""></video>
+    </div>
+    <br> -->
+
+    <div id="ImageTest" ></div>
+<br>
+         	<div class="form-group" id=searchBox>
+    		<label for="comment">검색: </label>
+    		<select name="searchDB" id="searchDB">
+  <option value="message">메세지 검색</option>
+  <option value="title" selected>제목 검색</option>
+  <option value="_id" >ID 검색</option>
+</select>
+    		<input class="form-control"   id="searchContent" name="searchContent" placeholder="기본 제목으로 검색"></input>
+    		<br>
+    		<button id="dbSearchBtn" class="btn btn-primary">검색하기</button>
+    		<br>
+    		<br>
+    		<div id ="dbSearchBtn2" >
+	    		<button   id = "ban"  value="반찬"  class="btn btn-success">반찬</button>
+	    		<button   id = "ban"  value="음료"   class="btn btn-danger">음료</button>
+	    		<button   id = "ban" value="과일" class="btn btn-warning">과일</button>
+	    		<button   id = "ban" value="재료"  class="btn btn-info">재료</button>
+	    		<button   id = "ban" value="소스"  class="btn btn-light">소스</button>
+	    		<button   id = "ban" value="냉동"  class="btn btn-dark">냉동</button>
+	    		<button   id = "ban" value="간식"  class="btn btn-secondary">간식</button>
+    		</div>
+    	</div>
+
+    <br>
+    <h2>검색 목록</h2>
+    <h3 id="findSearchMemoCount2">검색 count : <span id="findSearchMemoCount"></span></h3>
+    <div id="searchResult"></div>
+
+ <!-- <input type="file" id="image" onchange="loadImage()"> -->
+    <br>
+    <button id="scroll-to-top" class="btn btn-primary">Top</button>
+
+
+<h2>전체 목록</h2>
+
+    <!--새로고침 후 적용되어서 별로-->
+    <!--<h3>전체목록 갯수: <span th:text="${count}"></span> </h3>-->
+
+    <!--데이터만 변경하기.-->
+    <h3>전체 count : <span id="findAllMemoCount"></span></h3>
+
+      <div id="dbResult"></div>
+
+
+
+     </th:block>
+</body>
+ 
+
